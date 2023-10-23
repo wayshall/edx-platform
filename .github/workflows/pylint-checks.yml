@@ -66,6 +66,7 @@ jobs:
       - name: Run quality tests
         run: |
           pylint ${{ matrix.path }}
+          ruff check ${{ matrix.path }}
 
   # This job aggregates test results. It's the required check for branch protection.
   # https://github.com/marketplace/actions/alls-green#why
