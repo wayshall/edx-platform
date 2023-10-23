@@ -65,7 +65,7 @@ jobs:
 
       - name: Run quality tests
         run: |
-          ruff check ${{ matrix.path }}
+          ruff check ${{ matrix.path }} --preview
 
   # This job aggregates test results. It's the required check for branch protection.
   # https://github.com/marketplace/actions/alls-green#why
