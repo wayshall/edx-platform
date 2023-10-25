@@ -1059,3 +1059,7 @@ urlpatterns += [
 urlpatterns += [
     path('api/notifications/', include('openedx.core.djangoapps.notifications.urls')),
 ]
+
+urlpatterns += [
+    path('api/course_roles/', include('openedx.core.djangoapps.course_roles.urls', namespace='course_roles_api')),
+]
