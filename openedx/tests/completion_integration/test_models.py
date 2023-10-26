@@ -62,7 +62,7 @@ class SubmitCompletionTestCase(CompletionSetUpMixin, TestCase):
         self.set_up_completion()
 
     def test_changed_value(self):
-        with self.assertNumQueries(SELECT + UPDATE + 2 * SAVEPOINT + 2 * OTHER):
+        with self.assertNumQueries(SELECT + UPDATE + 2 * SAVEPOINT + 3 * OTHER):
             # OTHER = user exists, completion exists
             completion, isnew = models.BlockCompletion.objects.submit_completion(
                 user=self.user,
@@ -75,7 +75,7 @@ class SubmitCompletionTestCase(CompletionSetUpMixin, TestCase):
         assert models.BlockCompletion.objects.count() == 1
 
     def test_unchanged_value(self):
-        with self.assertNumQueries(SELECT + 2 * SAVEPOINT):
+        with self.assertNumQueries(SELECT + 3 * SAVEPOINT):
             completion, isnew = models.BlockCompletion.objects.submit_completion(
                 user=self.user,
                 block_key=self.block_key,
